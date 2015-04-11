@@ -34,9 +34,13 @@ public class MainWindow extends Application {
 
     @Override
     public void start(final Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("mainWindow.fxml"));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        MainWindowController controller = loader.getController();
+        controller.init(primaryStage);
     }
 }

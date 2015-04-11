@@ -1,5 +1,5 @@
 /*
-This file is part of Syncopto. Â© 2015 Simon Lammer (lammer.simon@gmail.com)
+This file is part of Syncopto. © 2015 Simon Lammer (lammer.simon@gmail.com)
 
 Syncopto is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,15 +15,8 @@ You should have received a copy of the GNU General Public License
 along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#imgView_status {
-    -fx-fit-to-height: true;
-    -fx-image: url("sync_green.png");
-    -fx-min-height: 0;
-    -fx-pref-height: 900px;
-    /* * /
-    -fx-background-image: url("sync.png");
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: 500 135;
-    -fx-background-position: left top;
-    /* */
+/* This file contains general styling of windows */
+
+.root {
+    -fx-font-size: 1em;
 }
