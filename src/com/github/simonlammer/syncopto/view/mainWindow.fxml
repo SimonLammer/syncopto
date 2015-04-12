@@ -65,10 +65,176 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="Untitled Tab 2">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
+                <Tab text="Links">
+                     <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane layoutX="200.0" layoutY="136.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <center>
+                                    <GridPane BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="NEVER" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="NEVER" />
+                                          <ColumnConstraints hgrow="NEVER" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints />
+                                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER" />
+                                        <RowConstraints minHeight="-Infinity" prefHeight="40.0" vgrow="NEVER" />
+                                          <RowConstraints vgrow="NEVER" />
+                                        <RowConstraints vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="From" GridPane.rowIndex="1" />
+                                          <Label text="To" GridPane.rowIndex="2" />
+                                          <TextField minWidth="40.0" text="C:\some\dir\I\want\to\link" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField text="D:\path\to\another\directory\with\a\really\very\long\path\indeed\" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Button mnemonicParsing="false" text="..." GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Button mnemonicParsing="false" text="..." GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                          <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
+                                             <left>
+                                                <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <ListView VBox.vgrow="ALWAYS">
+                                                         <opaqueInsets>
+                                                            <Insets />
+                                                         </opaqueInsets>
+                                                      </ListView>
+                                                   </children>
+                                                </VBox>
+                                             </left>
+                                             <center>
+                                                <GridPane BorderPane.alignment="CENTER">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="NEVER" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="-Infinity" vgrow="NEVER" />
+                                                    <RowConstraints vgrow="NEVER" />
+                                                    <RowConstraints minHeight="-Infinity" vgrow="NEVER" />
+                                                      <RowConstraints vgrow="ALWAYS" />
+                                                    <RowConstraints vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label text="Pattern" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets right="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <GridPane GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                                         <children>
+                                                            <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="New filter" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                            <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Remove filter" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                         </children>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <padding>
+                                                            <Insets top="5.0" />
+                                                         </padding>
+                                                      </GridPane>
+                                                      <Label text="Mode" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets right="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <VBox GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                                         <children>
+                                                            <RadioButton disable="true" mnemonicParsing="false" selected="true" text="Selection">
+                                                               <toggleGroup>
+                                                                  <ToggleGroup fx:id="mode" />
+                                                               </toggleGroup>
+                                                            </RadioButton>
+                                                            <RadioButton disable="true" mnemonicParsing="false" text="Exclusion" toggleGroup="$mode" />
+                                                         </children>
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </VBox>
+                                                      <Label text="Preview" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets right="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <TreeView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <Label text="Name" />
+                                                      <TextField disable="true" GridPane.columnIndex="1" />
+                                                   </children>
+                                                   <BorderPane.margin>
+                                                      <Insets left="10.0" />
+                                                   </BorderPane.margin>
+                                                </GridPane>
+                                             </center>
+                                             <GridPane.margin>
+                                                <Insets bottom="10.0" />
+                                             </GridPane.margin>
+                                          </BorderPane>
+                                          <AnchorPane GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                             <children>
+                                                <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="40.0" text="Filter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                             <GridPane.margin>
+                                                <Insets />
+                                             </GridPane.margin>
+                                          </AnchorPane>
+                                          <Label text="Name" />
+                                          <TextField GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <GridPane GridPane.columnSpan="3" GridPane.rowIndex="5">
+                                             <children>
+                                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New link" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Remove link" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" />
+                                                <ColumnConstraints hgrow="SOMETIMES" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </children>
+                                       <BorderPane.margin>
+                                          <Insets left="10.0" />
+                                       </BorderPane.margin>
+                                    </GridPane>
+                                 </center>
+                                 <left>
+                                    <VBox BorderPane.alignment="CENTER">
+                                       <children>
+                                          <ListView fx:id="listView_status1" VBox.vgrow="ALWAYS">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </ListView>
+                                       </children>
+                                    </VBox>
+                                 </left>
+                              </BorderPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
+                           </padding></AnchorPane>
+                     </content>
                 </Tab>
               </tabs>
             </TabPane>
