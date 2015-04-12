@@ -38,6 +38,7 @@ public class MainWindow extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Syncopto");
         primaryStage.show();
 
         MainWindowController controller = loader.getController();
