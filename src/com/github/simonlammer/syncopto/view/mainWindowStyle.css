@@ -24,3 +24,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
     -fx-fit-to-width: true;
     -fx-image: url("syncopto.png");
 }
+
+.tabPane {
+    -fx-padding: 5;
+}
