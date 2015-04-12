@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.net.*?>
@@ -236,6 +237,71 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                            </padding></AnchorPane>
                      </content>
                 </Tab>
+                  <Tab text="About">
+                    <content>
+                      <AnchorPane>
+                           <children>
+                              <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
+                                  <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ImageView id="imgView_about" fitWidth="650.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES" />
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" visible="false" GridPane.rowIndex="1">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Copyright: © 2015 Simon Lammer&#10;Licensed under GPL (version 3)&#10;Source: https://github.com/SimonLammer/syncopto" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <GridPane GridPane.rowIndex="1">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints vgrow="SOMETIMES" />
+                                        <RowConstraints vgrow="NEVER" />
+                                        <RowConstraints vgrow="NEVER" />
+                                          <RowConstraints vgrow="NEVER" />
+                                          <RowConstraints vgrow="ALWAYS" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="Syncopto" GridPane.halignment="RIGHT">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Copyright" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="(C) 2015 Simon Lammer (lammer.simon@gmail.com)" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label text="Licenced under" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="GPL (version 3)" textFill="#177aeb" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label text="Source" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="github" textFill="#177aeb" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label text="0.1" GridPane.columnIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+<!-- -->
               </tabs>
             </TabPane>
          </center></BorderPane>
