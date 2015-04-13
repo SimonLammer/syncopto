@@ -21,12 +21,20 @@ import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class MainWindowController {
 
@@ -35,6 +43,12 @@ public class MainWindowController {
 
     @FXML
     private ListView<?> listView_status;
+
+    @FXML
+    private Label label_about_github;
+
+    @FXML
+    private Label label_about_license;
 
     public void init(Stage stage) {
         ObservableList observableList = FXCollections.observableArrayList();
@@ -49,5 +63,22 @@ public class MainWindowController {
                 "Removed: Stuff > someRandomFileIDontWantAnymore.txt"
         );
         listView_status.setItems(observableList);
+
+        label_about_license.setOnMouseClicked((MouseEvent event) -> {
+            openURL("http://www.link.to.gpl3.com/"); // TODO replace string with link to GPL v3
+        });
+        label_about_github.setOnMouseClicked((MouseEvent event) -> {
+            openURL("https://www.github.com/simonlammer/syncopto"); // TODO validate link
+        });
+    }
+
+    private void openURL(String url) {
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -295,13 +295,13 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                 <Insets right="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="GPL (version 3)" textFill="#177aeb" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label fx:id="label_about_license" text="GPL (version 3)" textFill="#177aeb" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <Label text="Source" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets right="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="github" textFill="#177aeb" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label fx:id="label_about_github" text="github" textFill="#177aeb" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                           <Label text="0.1" GridPane.columnIndex="1" />
                                        </children>
                                     </GridPane>
