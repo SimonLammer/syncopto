@@ -246,6 +246,19 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                            </padding></AnchorPane>
                      </content>
                 </Tab>
+                  <Tab text="Settings"> <!-- TODO add settings -->
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="127.0" layoutY="132.0" text="TODO">
+                                 <font>
+                                    <Font size="200.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
                   <Tab text="About">
                     <content>
                       <AnchorPane styleClass="tabPane">
