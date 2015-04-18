@@ -87,6 +87,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                         <RowConstraints vgrow="NEVER" />
                                         <RowConstraints minHeight="-Infinity" vgrow="NEVER" />
                                           <RowConstraints vgrow="NEVER" />
+                                          <RowConstraints vgrow="NEVER" />
                                         <RowConstraints vgrow="ALWAYS" />
                                           <RowConstraints vgrow="NEVER" />
                                       </rowConstraints>
@@ -105,18 +106,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                           </TextField>
                                           <Button mnemonicParsing="false" text="..." GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                           <Button mnemonicParsing="false" text="..." GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                          <BorderPane GridPane.columnSpan="3" GridPane.rowIndex="4">
-                                             <left>
-                                                <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
-                                                   <children>
-                                                      <ListView VBox.vgrow="ALWAYS">
-                                                         <opaqueInsets>
-                                                            <Insets />
-                                                         </opaqueInsets>
-                                                      </ListView>
-                                                   </children>
-                                                </VBox>
-                                             </left>
+                                          <BorderPane GridPane.columnSpan="3" GridPane.rowIndex="5">
                                              <center>
                                                 <GridPane BorderPane.alignment="CENTER">
                                                   <columnConstraints>
@@ -126,7 +116,6 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                   <rowConstraints>
                                                       <RowConstraints minHeight="-Infinity" vgrow="NEVER" />
                                                     <RowConstraints vgrow="NEVER" />
-                                                    <RowConstraints minHeight="-Infinity" vgrow="NEVER" />
                                                       <RowConstraints vgrow="ALWAYS" />
                                                     <RowConstraints vgrow="SOMETIMES" />
                                                   </rowConstraints>
@@ -137,7 +126,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                          </GridPane.margin>
                                                       </Label>
                                                       <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                      <GridPane GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                                      <GridPane GridPane.columnSpan="2" GridPane.rowIndex="3">
                                                          <children>
                                                             <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New filter" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                                                             <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Remove filter" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
@@ -156,30 +145,12 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </GridPane>
-                                                      <Label text="Mode" GridPane.rowIndex="2">
+                                                      <Label text="Preview" GridPane.rowIndex="2">
                                                          <GridPane.margin>
                                                             <Insets right="5.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <VBox GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
-                                                         <children>
-                                                            <RadioButton disable="true" mnemonicParsing="false" selected="true" text="Selection">
-                                                               <toggleGroup>
-                                                                  <ToggleGroup fx:id="mode" />
-                                                               </toggleGroup>
-                                                            </RadioButton>
-                                                            <RadioButton disable="true" mnemonicParsing="false" text="Exclusion" toggleGroup="$mode" />
-                                                         </children>
-                                                         <GridPane.margin>
-                                                            <Insets />
-                                                         </GridPane.margin>
-                                                      </VBox>
-                                                      <Label text="Preview" GridPane.rowIndex="3">
-                                                         <GridPane.margin>
-                                                            <Insets right="5.0" />
-                                                         </GridPane.margin>
-                                                      </Label>
-                                                      <TreeView GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <TreeView GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <Label text="Name" />
                                                       <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" />
                                                    </children>
@@ -191,10 +162,17 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                              <GridPane.margin>
                                                 <Insets />
                                              </GridPane.margin>
+                                             <left>
+                                                <ListView BorderPane.alignment="CENTER">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </ListView>
+                                             </left>
                                           </BorderPane>
-                                          <AnchorPane GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                          <AnchorPane GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                                              <children>
-                                                <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="40.0" text="Filter" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="40.0" text="Filter" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
                                              <GridPane.margin>
                                                 <Insets />
@@ -206,14 +184,16 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <GridPane GridPane.columnSpan="3" GridPane.rowIndex="5">
+                                          <GridPane GridPane.columnSpan="3" GridPane.rowIndex="6">
                                              <children>
                                                 <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New link" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                                                <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Remove link" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Remove link" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Preview link" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                                              </children>
                                              <columnConstraints>
+                                                <ColumnConstraints hgrow="ALWAYS" />
                                                 <ColumnConstraints hgrow="SOMETIMES" />
-                                                <ColumnConstraints hgrow="SOMETIMES" />
+                                                <ColumnConstraints hgrow="ALWAYS" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints vgrow="SOMETIMES" />
@@ -222,6 +202,30 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                 <Insets top="5.0" />
                                              </GridPane.margin>
                                           </GridPane>
+                                          <Label text="Mode" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <VBox GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                             <children>
+                                                <RadioButton mnemonicParsing="false" selected="true" text="Selection">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="mode" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton mnemonicParsing="false" text="Exclusion" toggleGroup="$mode" />
+                                             </children>
+                                             <GridPane.margin>
+                                                <Insets />
+                                             </GridPane.margin>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </VBox>
                                        </children>
                                        <BorderPane.margin>
                                           <Insets left="5.0" />
@@ -229,15 +233,11 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                     </GridPane>
                                  </center>
                                  <left>
-                                    <VBox BorderPane.alignment="CENTER">
-                                       <children>
-                                          <ListView fx:id="listView_status1" VBox.vgrow="ALWAYS">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                          </ListView>
-                                       </children>
-                                    </VBox>
+                                    <ListView fx:id="listView_status1" BorderPane.alignment="CENTER">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </ListView>
                                  </left>
                               </BorderPane>
                            </children>
