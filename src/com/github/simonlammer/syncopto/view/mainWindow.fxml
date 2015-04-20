@@ -150,7 +150,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                             <Insets right="5.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <TreeView GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <TreeView disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <Label text="Name" />
                                                       <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" />
                                                    </children>
@@ -163,7 +163,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                 <Insets />
                                              </GridPane.margin>
                                              <left>
-                                                <ListView BorderPane.alignment="CENTER">
+                                                <ListView disable="true" BorderPane.alignment="CENTER">
                                                    <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>
