@@ -116,7 +116,8 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                   <rowConstraints>
                                                       <RowConstraints minHeight="-Infinity" vgrow="NEVER" />
                                                     <RowConstraints vgrow="NEVER" />
-                                                      <RowConstraints minHeight="40.0" vgrow="NEVER" />
+                                                      <RowConstraints vgrow="NEVER" />
+                                                      <RowConstraints vgrow="SOMETIMES" />
                                                       <RowConstraints vgrow="ALWAYS" />
                                                     <RowConstraints vgrow="SOMETIMES" />
                                                   </rowConstraints>
@@ -127,7 +128,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                          </GridPane.margin>
                                                       </Label>
                                                       <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                      <GridPane GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                                      <GridPane GridPane.columnSpan="2" GridPane.rowIndex="5">
                                                          <children>
                                                             <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New filter" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                                                             <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Remove filter" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
@@ -146,20 +147,26 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </GridPane>
-                                                      <Label text="Preview" GridPane.rowIndex="3">
+                                                      <Label text="Preview" GridPane.rowIndex="4">
                                                          <GridPane.margin>
                                                             <Insets right="5.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <TreeView disable="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <TreeView disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                       <Label text="Name" />
                                                       <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" />
-                                                      <CheckBox mnemonicParsing="false" text="Scan subdirectories" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" text="Scan subdirectories" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <Label text="TODO" GridPane.rowIndex="2"> <!-- TODO give the label a proper text -->
                                                          <GridPane.margin>
                                                             <Insets right="5.0" />
                                                          </GridPane.margin>
                                                       </Label>
+                                                      <Label text="Subdir Pattern" wrapText="true" GridPane.rowIndex="3"> <!-- TODO give the label a proper text -->
+                                                         <GridPane.margin>
+                                                            <Insets right="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <TextField disable="true" text=".*" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                    </children>
                                                    <BorderPane.margin>
                                                       <Insets left="10.0" />
