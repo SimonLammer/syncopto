@@ -32,7 +32,6 @@ import java.util.regex.Pattern;
 public class Filter_Test {
     private static File dir;
     private static Path dirPath;
-    private static Path[] files;
     private static String dirString = "testDirectory-Filter_Test/";
 
     /* test directory structure:
@@ -110,10 +109,50 @@ public class Filter_Test {
     public void testSimple() {
         Pattern pattern = Pattern.compile("te[sx]t");
         Filter f = new Filter("test", pattern);
+        Assert.assertEquals("test", f.getName());
+        Assert.assertEquals(pattern, f.getPattern());
         Path[] selected = f.getSelectedFiles(dirPath);
         Assert.assertEquals(2, selected.length);
-        Assert.assertEquals(files[0], selected[0]);
-        Assert.assertEquals(files[1], selected[1]);
-        Assert.assertFalse(f.isSelected(files[2]));
+        Assert.assertEquals(new File(fileNames[7]).toPath(), selected[0]);
+        Assert.assertEquals(new File(fileNames[8]), selected[1]);
+        Assert.assertFalse(f.isSelected(new File(fileNames[9]).toPath()));
+    }
+
+    @Test
+    public void testDirectories() {
+        Pattern pattern = Pattern.compile(".*");
+        Pattern dirPattern = Pattern.compile("directory[AB]");
+        Filter f = new Filter("test", pattern, dirPattern);
+        Assert.assertEquals(pattern, f.getPattern());
+        Assert.assertEquals(dirPattern, f.getDirectoryPattern());
+        Path[] selected = f.getSelectedFiles(dirPath);
+        Assert.assertEquals(6, selected.length);
+        for (int i = 0; i < 7; i++) {
+            Assert.assertTrue(f.isSelected(new File(fileNames[i]).toPath()));
+        }
+        for (int i = 7; i < fileNames.length; i++) {
+            Assert.assertFalse(f.isSelected(new File(fileNames[i]).toPath()));
+        }
+    }
+
+    @Test
+    public void testRecursions() {
+        Pattern pattern = Pattern.compile("f.*\\.file");
+        Pattern dirPattern = Pattern.compile(".*");
+        Filter f = new Filter("test", pattern, dirPattern);
+        Assert.assertEquals("test", f.getName());
+        Assert.assertEquals(pattern, f.getPattern());
+        Assert.assertEquals(dirPattern, f.getDirectoryPattern());
+        Path[] selected = f.getSelectedFiles(dirPath);
+        Assert.assertEquals(2, selected.length);
+        for (int i = 0; i < 5; i++) {
+            Assert.assertFalse(f.isSelected(new File(fileNames[i]).toPath()));
+        }
+        for (int i = 5; i < 7; i++) {
+            Assert.assertTrue(f.isSelected(new File(fileNames[i]).toPath()));
+        }
+        for (int i = 7; i < fileNames.length; i++) {
+            Assert.assertFalse(f.isSelected(new File(fileNames[i]).toPath()));
+        }
     }
 }
