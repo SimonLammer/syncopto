@@ -61,10 +61,10 @@ public class Filter {
 
     /**
      * Retrieves all files within the directory that pass the filter.
-     * @param dir directory that get's examined
+     * @param directory directory that get's examined
      * @return all files within the directory that pass the filter
      */
-    public Path[] getSelectedFiles(Path dir) {
+    public Path[] getSelectedFiles(Path directory) {
         throw new NotImplementedException(); // TODO implement method
     }
 
