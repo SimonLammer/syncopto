@@ -35,30 +35,96 @@ public class Filter {
     private Filter(String name) {
         setName(name);
     }
+
+    /**
+     * This constructor will not set a directoryPattern, thus files in subdirectories will be ignored (unless setDirectoryPattern is invoked afterwards)
+     * This constructor makes the Filter ignore hidden files. (Can be changed later on via invoking setCheckHiddenFiles)
+     * @param name
+     * @param patternRegex String - in regex format - to be compiled into a Pattern,
+     *                     which will determine whether or not a file passes the filter.
+     */
     public Filter(String name, String patternRegex) {
         this(name, patternRegex, null, false);
     }
+
+    /**
+     * This constructor will not set a directoryPattern, thus files in subdirectories will be ignored (unless setDirectoryPattern is invoked afterwards)
+     * @param name
+     * @param patternRegex String - in regex format - to be compiled into a Pattern,
+     *                     which will determine whether or not a file passes the filter.
+     * @param checkHiddenFiles Determines whether or not hidden files are checked.
+     *                         If this is set to false, they will be ignored.
+     */
     public Filter(String name, String patternRegex, boolean checkHiddenFiles) {
         this(name, patternRegex, null, checkHiddenFiles);
     }
+
+    /**
+     * This constructor makes the Filter ignore hidden files. (Can be changed later on via invoking setCheckHiddenFiles)
+     * @param name
+     * @param patternRegex String - in regex format - to be compiled into a Pattern,
+     *                     which will determine whether or not a file passes the filter.
+     * @param directoryPatternRegex String - in regex format - to be compiled into a Pattern,
+     *                              which will determine whether or not files in a directory get checked.
+     */
     public Filter(String name, String patternRegex, String directoryPatternRegex) {
         this(name, patternRegex, directoryPatternRegex, false);
     }
+
+    /**
+     * @param name
+     * @param patternRegex String - in regex format - to be compiled into a Pattern,
+     *                     which will determine whether or not a file passes the filter.
+     * @param directoryPatternRegex String - in regex format - to be compiled into a Pattern,
+     *                              which will determine whether or not files in a directory get checked.
+     * @param checkHiddenFiles Determines whether or not hidden files are checked.
+     *                         If this is set to false, they will be ignored.
+     */
     public Filter(String name, String patternRegex, String directoryPatternRegex, boolean checkHiddenFiles) {
         this(name);
         setPattern(patternRegex);
         setDirectoryPattern(directoryPatternRegex);
         this.checkHiddenFiles = checkHiddenFiles;
     }
+
+    /**
+     * This constructor will not set a directoryPattern, thus files in subdirectories will be ignored (unless setDirectoryPattern is invoked afterwards)
+     * This constructor makes the Filter ignore hidden files. (Can be changed later on via invoking setCheckHiddenFiles)
+     * @param name
+     * @param pattern Determines whether or not a file passes the filter.
+     */
     public Filter(String name, Pattern pattern) {
         this(name, pattern, null);
     }
+
+    /**
+     * This constructor will not set a directoryPattern, thus files in subdirectories will be ignored (unless setDirectoryPattern is invoked afterwards)
+     * @param name
+     * @param pattern Determines whether or not a file passes the filter.
+     * @param checkHiddenFiles Determines whether or not hidden files are checked.
+     *                         If this is set to false, they will be ignored.
+     */
     public Filter(String name, Pattern pattern, boolean checkHiddenFiles) {
         this(name, pattern, null, checkHiddenFiles);
     }
+
+    /**
+     * This constructor makes the Filter ignore hidden files. (Can be changed later on via invoking setCheckHiddenFiles)
+     * @param name
+     * @param pattern Determines whether or not a file passes the filter
+     * @param directoryPattern Determines whether or not files in a directory get checked
+     */
     public Filter(String name, Pattern pattern, Pattern directoryPattern) {
         this(name, pattern, directoryPattern, false);
     }
+
+    /**
+     * @param name
+     * @param pattern Determines whether or not a file passes the filter
+     * @param directoryPattern Determines whether or not files in a directory get checked
+     * @param checkHiddenFiles Determines whether or not hidden files are checked.
+     *                         If this is set to false, they will be ignored.
+     */
     public Filter(String name, Pattern pattern, Pattern directoryPattern, boolean checkHiddenFiles) {
         this(name);
         setPattern(pattern);
