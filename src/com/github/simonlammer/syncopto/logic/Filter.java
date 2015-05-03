@@ -19,10 +19,15 @@ package com.github.simonlammer.syncopto.logic;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.io.File;
 import java.nio.file.Path;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Filter {
+    private boolean checkHiddenFiles;
     private Pattern dirPattern;
     private Pattern pattern;
     private String name;
@@ -31,20 +36,34 @@ public class Filter {
         setName(name);
     }
     public Filter(String name, String patternRegex) {
-        this(name, patternRegex, null);
+        this(name, patternRegex, null, false);
+    }
+    public Filter(String name, String patternRegex, boolean checkHiddenFiles) {
+        this(name, patternRegex, null, checkHiddenFiles);
     }
     public Filter(String name, String patternRegex, String directoryPatternRegex) {
+        this(name, patternRegex, directoryPatternRegex, false);
+    }
+    public Filter(String name, String patternRegex, String directoryPatternRegex, boolean checkHiddenFiles) {
         this(name);
         setPattern(patternRegex);
         setDirectoryPattern(directoryPatternRegex);
+        this.checkHiddenFiles = checkHiddenFiles;
     }
     public Filter(String name, Pattern pattern) {
         this(name, pattern, null);
     }
+    public Filter(String name, Pattern pattern, boolean checkHiddenFiles) {
+        this(name, pattern, null, checkHiddenFiles);
+    }
     public Filter(String name, Pattern pattern, Pattern directoryPattern) {
+        this(name, pattern, directoryPattern, false);
+    }
+    public Filter(String name, Pattern pattern, Pattern directoryPattern, boolean checkHiddenFiles) {
         this(name);
         setPattern(pattern);
         setDirectoryPattern(directoryPattern);
+        this.checkHiddenFiles = checkHiddenFiles;
     }
 
     public Pattern getDirectoryPattern() {
@@ -64,8 +83,29 @@ public class Filter {
      * @param directory directory that get's examined
      * @return all files within the directory that pass the filter
      */
-    public Path[] getSelectedFiles(Path directory) {
-        throw new NotImplementedException(); // TODO implement method
+    public File[] getSelectedFiles(File directory) {
+        if (!directory.exists() || !directory.isDirectory()) {
+            throw new IllegalArgumentException("Directory not found or does not exist: " + directory.getAbsolutePath());
+        }
+        List<File> files = new LinkedList<>();
+        File[] dirFiles = directory.listFiles();
+        for (File file : dirFiles) {
+            if (file.isDirectory()) {
+                File[] subFiles = getSelectedFiles(file);
+                Collections.addAll(files, subFiles);
+            } else if(file.isFile()) {
+                if (isSelected(file)) {
+                    files.add(file);
+                }
+            } else {
+                throw new IllegalStateException("The path '" + file.getAbsolutePath() + "' leads neither to a file nor a directory");
+            }
+        }
+        return files.toArray(new File[files.size()]);
+    }
+
+    public boolean isCheckingHiddenFiles() {
+        return checkHiddenFiles;
     }
 
     public boolean isRecursive() {
@@ -77,8 +117,12 @@ public class Filter {
      * @param file Path to a file
      * @return true if the file passes the filter; false if the file is a directory or does not pass the filter.
      */
-    public boolean isSelected(Path file) {
+    public boolean isSelected(File file) {
         throw new NotImplementedException(); // TODO implement method
+    }
+
+    public void setCheckHiddenFiles(boolean newValue) {
+        checkHiddenFiles = newValue;
     }
 
     public void setDirectoryPattern(Pattern pattern) {
