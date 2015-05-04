@@ -184,7 +184,7 @@ public class Filter {
      * @return true if the file passes the filter; false if the file is a directory or does not pass the filter.
      */
     public boolean isSelected(File file) {
-        throw new NotImplementedException(); // TODO implement method
+        return pattern.matcher(file.getName()).matches() && (checkHiddenFiles || !file.isHidden());
     }
 
     public void setCheckHiddenFiles(boolean newValue) {
