@@ -157,8 +157,10 @@ public class Filter {
         File[] dirFiles = directory.listFiles();
         for (File file : dirFiles) {
             if (file.isDirectory()) {
-                File[] subFiles = getSelectedFiles(file);
-                Collections.addAll(files, subFiles);
+                if (dirPattern == null || dirPattern.matcher(file.getName()).matches()) {
+                    File[] subFiles = getSelectedFiles(file);
+                    Collections.addAll(files, subFiles);
+                }
             } else if(file.isFile()) {
                 if (isSelected(file)) {
                     files.add(file);
@@ -184,7 +186,8 @@ public class Filter {
      * @return true if the file passes the filter; false if the file is a directory or does not pass the filter.
      */
     public boolean isSelected(File file) {
-        return pattern.matcher(file.getName()).matches() && (checkHiddenFiles || !file.isHidden());
+        boolean matches = pattern.matcher(file.getName()).matches();
+        return  matches && (checkHiddenFiles || !file.isHidden());
     }
 
     public void setCheckHiddenFiles(boolean newValue) {
