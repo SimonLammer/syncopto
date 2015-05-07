@@ -72,9 +72,10 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                 <Tab text="Links">
                      <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="tabPane">
-                           <children>
+<!-- Content of "Links" tab -->
+                        <children>
                               <BorderPane layoutX="200.0" layoutY="136.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <center>
+                                 <right>
                                     <GridPane BorderPane.alignment="CENTER">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="NEVER" />
@@ -96,29 +97,38 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                           <Label text="To" GridPane.rowIndex="2" />
                                           <TextField minHeight="-Infinity" prefHeight="40.0" text="C:\some\dir\I\want\to\link" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <GridPane.margin>
-                                                <Insets left="5.0" right="5.0" />
+                                                <Insets left="5.0" right="5.0" top="3.0" />
                                              </GridPane.margin>
                                           </TextField>
                                           <TextField minHeight="-Infinity" prefHeight="40.0" text="D:\path\to\another\directory\with\a\really\very\long\path\indeed\" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <GridPane.margin>
-                                                <Insets left="5.0" right="5.0" />
+                                                <Insets left="5.0" right="5.0" top="3.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <Button mnemonicParsing="false" text="..." GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                          <Button mnemonicParsing="false" text="..." GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                          <Button mnemonicParsing="false" text="..." GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets top="2.0" />
+                                             </GridPane.margin></Button>
+                                          <Button mnemonicParsing="false" text="..." GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets top="2.0" />
+                                             </GridPane.margin></Button>
                                           <BorderPane GridPane.columnSpan="3" GridPane.rowIndex="5">
-                                             <center>
+                                             <GridPane.margin>
+                                                <Insets />
+                                             </GridPane.margin>
+                                             <right>
                                                 <GridPane BorderPane.alignment="CENTER">
                                                   <columnConstraints>
                                                     <ColumnConstraints hgrow="NEVER" />
-                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" />
                                                   </columnConstraints>
                                                   <rowConstraints>
-                                                      <RowConstraints minHeight="-Infinity" vgrow="NEVER" />
+                                                      <RowConstraints vgrow="NEVER" />
                                                     <RowConstraints vgrow="NEVER" />
                                                       <RowConstraints vgrow="NEVER" />
-                                                      <RowConstraints vgrow="SOMETIMES" />
-                                                      <RowConstraints vgrow="ALWAYS" />
+                                                      <RowConstraints vgrow="NEVER" />
+                                                      <RowConstraints vgrow="NEVER" />
                                                     <RowConstraints vgrow="SOMETIMES" />
                                                   </rowConstraints>
                                                    <children>
@@ -127,15 +137,24 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                             <Insets right="5.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets top="3.0" />
+                                                         </GridPane.margin></TextField>
                                                       <GridPane GridPane.columnSpan="2" GridPane.rowIndex="5">
                                                          <children>
                                                             <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New filter" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                                                            <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Remove filter" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                            <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Remove filter" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                            <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Preview filter" GridPane.columnIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="3.0" right="3.0" />
+                                                               </GridPane.margin>
+                                                            </Button>
                                                          </children>
                                                          <columnConstraints>
-                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" />
                                                          </columnConstraints>
                                                          <rowConstraints>
                                                             <RowConstraints minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
@@ -147,15 +166,12 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </GridPane>
-                                                      <Label text="Preview" GridPane.rowIndex="4">
-                                                         <GridPane.margin>
-                                                            <Insets right="5.0" />
-                                                         </GridPane.margin>
-                                                      </Label>
-                                                      <TreeView disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                       <Label text="Name" />
                                                       <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" />
-                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" text="Scan subdirectories" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" text="Scan subdirectories" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets top="3.0" />
+                                                         </GridPane.margin></CheckBox>
                                                       <Label text="TODO" GridPane.rowIndex="2"> <!-- TODO give the label a proper text -->
                                                          <GridPane.margin>
                                                             <Insets right="5.0" />
@@ -166,30 +182,36 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                             <Insets right="5.0" />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <TextField disable="true" text=".*" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                      <TextField disable="true" text=".*" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets top="3.0" />
+                                                         </GridPane.margin></TextField>
+                                                      <Label text="TODO" GridPane.rowIndex="4" />
+                                                      <CheckBox disable="true" mnemonicParsing="false" text="Check hidden files" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets top="3.0" />
+                                                         </GridPane.margin>
+                                                      </CheckBox>
                                                    </children>
                                                    <BorderPane.margin>
                                                       <Insets left="10.0" />
                                                    </BorderPane.margin>
                                                 </GridPane>
-                                             </center>
-                                             <GridPane.margin>
-                                                <Insets />
-                                             </GridPane.margin>
-                                             <left>
+                                             </right>
+                                             <center>
                                                 <ListView disable="true" BorderPane.alignment="CENTER">
                                                    <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>
                                                 </ListView>
-                                             </left>
+                                             </center>
                                           </BorderPane>
                                           <AnchorPane GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                                              <children>
                                                 <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="40.0" text="Filter" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
                                              <GridPane.margin>
-                                                <Insets />
+                                                <Insets top="3.0" />
                                              </GridPane.margin>
                                           </AnchorPane>
                                           <Label text="Name" />
@@ -202,7 +224,10 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                              <children>
                                                 <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New link" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                                                 <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Remove link" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                                                <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Preview link" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Preview link" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                                   <GridPane.margin>
+                                                      <Insets left="3.0" right="3.0" />
+                                                   </GridPane.margin></Button>
                                              </children>
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="ALWAYS" />
@@ -213,7 +238,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                 <RowConstraints vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <GridPane.margin>
-                                                <Insets top="5.0" />
+                                                <Insets top="7.0" />
                                              </GridPane.margin>
                                           </GridPane>
                                           <Label text="Mode" GridPane.rowIndex="3">
@@ -228,10 +253,13 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                       <ToggleGroup fx:id="mode" />
                                                    </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton mnemonicParsing="false" text="Exclusion" toggleGroup="$mode" />
+                                                <RadioButton mnemonicParsing="false" text="Exclusion" toggleGroup="$mode">
+                                                   <padding>
+                                                      <Insets top="2.0" />
+                                                   </padding></RadioButton>
                                              </children>
                                              <GridPane.margin>
-                                                <Insets />
+                                                <Insets top="3.0" />
                                              </GridPane.margin>
                                              <opaqueInsets>
                                                 <Insets />
@@ -245,20 +273,22 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                           <Insets left="5.0" />
                                        </BorderPane.margin>
                                     </GridPane>
-                                 </center>
-                                 <left>
+                                 </right>
+                                 <center>
                                     <ListView fx:id="listView_status1" BorderPane.alignment="CENTER">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </ListView>
-                                 </left>
+                                 </center>
                               </BorderPane>
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" />
-                           </padding></AnchorPane>
-                     </content>
+                           </padding>
+<!-- End of content of "Links" tab -->
+                    </AnchorPane>
+                  </content>
                 </Tab>
                   <Tab text="Settings"> <!-- TODO add settings -->
                     <content>
@@ -276,46 +306,47 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                   <Tab text="About">
                     <content>
                       <AnchorPane styleClass="tabPane">
-                           <children>
-                              <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
-                                  <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <ImageView id="imgView_about" fitWidth="650.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES" />
-                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" visible="false" GridPane.rowIndex="1">
-                                       <children>
-                                          <Label alignment="CENTER" contentDisplay="CENTER" text="Copyright: © 2015 Simon Lammer&#10;Licensed under GPL (version 3)&#10;Source: https://github.com/SimonLammer/syncopto" textAlignment="CENTER" />
-                                       </children>
-                                    </VBox>
-                                    <GridPane GridPane.rowIndex="1">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints vgrow="SOMETIMES" />
-                                        <RowConstraints vgrow="NEVER" />
-                                        <RowConstraints vgrow="NEVER" />
-                                          <RowConstraints vgrow="NEVER" />
-                                          <RowConstraints vgrow="ALWAYS" />
-                                      </rowConstraints>
-                                       <children>
-                                          <Label text="Syncopto" GridPane.halignment="RIGHT">
-                                             <GridPane.margin>
-                                                <Insets right="5.0" />
-                                             </GridPane.margin>
-                                          </Label>
-                                          <Label text="Copyright" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-                                             <GridPane.margin>
-                                                <Insets right="5.0" />
-                                             </GridPane.margin>
-                                          </Label>
-                                           <!-- TODO replace (C) below with proper copyright symbol -->
+<!-- Content of "About" tab -->
+                                  <children>
+                                     <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                         <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
+                                         <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                        <children>
+                                           <ImageView id="imgView_about" fitWidth="650.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES" />
+                                           <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" visible="false" GridPane.rowIndex="1">
+                                              <children>
+                                                 <Label alignment="CENTER" contentDisplay="CENTER" text="Copyright: © 2015 Simon Lammer&#10;Licensed under GPL (version 3)&#10;Source: https://github.com/SimonLammer/syncopto" textAlignment="CENTER" />
+                                              </children>
+                                           </VBox>
+                                           <GridPane GridPane.rowIndex="1">
+                                             <columnConstraints>
+                                               <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                                               <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                               <RowConstraints vgrow="SOMETIMES" />
+                                               <RowConstraints vgrow="NEVER" />
+                                               <RowConstraints vgrow="NEVER" />
+                                                 <RowConstraints vgrow="NEVER" />
+                                                 <RowConstraints vgrow="ALWAYS" />
+                                             </rowConstraints>
+                                              <children>
+                                                 <Label text="Syncopto" GridPane.halignment="RIGHT">
+                                                    <GridPane.margin>
+                                                       <Insets right="5.0" />
+                                                    </GridPane.margin>
+                                                 </Label>
+                                                 <Label text="Copyright" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                                    <GridPane.margin>
+                                                       <Insets right="5.0" />
+                                                    </GridPane.margin>
+                                                 </Label>
+                                                  <!-- TODO replace (C) below with proper copyright symbol -->
                                           <Label text="(C) 2015 Simon Lammer (lammer.simon@gmail.com)" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Label text="Licenced under" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                                              <GridPane.margin>
@@ -336,9 +367,9 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                               </GridPane>
                            </children>
                         </AnchorPane>
+<!-- End of content of "About" tab -->
                     </content>
                   </Tab>
-<!-- -->
               </tabs>
             </TabPane>
          </center></BorderPane>
