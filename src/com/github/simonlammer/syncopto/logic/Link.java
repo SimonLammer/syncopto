@@ -25,16 +25,18 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class Link {
-    private File from; //directory
-    private File to; //directory
+    private File origin; //directory
+    private File destination; //directory
     private List<Filter> filters;
     private LinkMode mode;
     private String name;
 
-    // TODO implement constructors
-
     public void addFilter(Filter filter) {
         filters.add(filter);
+    }
+
+    public File getDestinationDirectory() {
+        return destination;
     }
 
     public List<Filter> getFilters() {
@@ -49,20 +51,8 @@ public class Link {
         return name;
     }
 
-    public void setMode(LinkMode mode) {
-        this.mode = mode;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setFilters(List<Filter> filters) {
-        this.filters = filters;
-    }
-
-    public void upateFileLinks(){
-        throw new NotImplementedException(); //TODO
+    public File getOriginDirectory() {
+        return origin;
     }
 
     public void removeAllFilters() {
@@ -79,5 +69,39 @@ public class Link {
 
     public boolean removeFilterIf(Predicate<? super Filter> predicate) {
         return filters.removeIf(predicate);
+    }
+
+    public boolean setDestinationDirectory(File dir) {
+        if (dir.exists() && dir.isDirectory() && dir.canWrite()) {
+            this.destination = dir;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void setMode(LinkMode mode) {
+        this.mode = mode;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean setOriginDirectory(File dir) {
+        if (dir.exists() && dir.isDirectory() && dir.canRead()) {
+            this.origin = dir;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void setFilters(List<Filter> filters) {
+        this.filters = filters;
+    }
+
+    public void upateFileLinks(){
+        throw new NotImplementedException(); //TODO
     }
 }
