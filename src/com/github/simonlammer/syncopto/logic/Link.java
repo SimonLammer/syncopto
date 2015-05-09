@@ -147,6 +147,20 @@ public class Link {
     }
 
     /**
+     * Checkes if any of the Link's Filters selects the file
+     * @param file File to be checked
+     * @return Whether or not any of the Link's Filters select the file
+     */
+    public boolean isFileSelected(File file) {
+        for (Filter filter : filters) {
+            if (filter.isSelected(file)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Removes all Filters from Link
      */
     public void removeAllFilters() {
@@ -202,6 +216,15 @@ public class Link {
     }
 
     /**
+     * Removes all current filters and adds the passed filters afterwards
+     * @param filters New Filters
+     */
+    public void setFilters(Collection<Filter> filters) {
+        removeAllFilters();
+        addAllFilters(filters);
+    }
+
+    /**
      * Sets the mode
      * @param mode New Mode
      */
@@ -242,15 +265,6 @@ public class Link {
         } else {
             return false;
         }
-    }
-
-    /**
-     * Removes all current filters and adds the passed filters afterwards
-     * @param filters New Filters
-     */
-    public void setFilters(Collection<Filter> filters) {
-        removeAllFilters();
-        addAllFilters(filters);
     }
 
     /**
