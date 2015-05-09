@@ -21,6 +21,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -30,6 +31,24 @@ public class Link {
     private List<Filter> filters;
     private LinkMode mode;
     private String name;
+
+    private Link(String name, LinkMode mode, Collection<Filter> filters) {
+        setName(name);
+        setMode(mode);
+        setFilters(filters);
+    }
+    public Link(String name, LinkMode mode, String originDirectoryPath, String destinationDirectoryPath) { this(name, mode, originDirectoryPath, destinationDirectoryPath, null); }
+    public Link(String name, LinkMode mode, String originDirectoryPath, String destinationDirectoryPath, Collection<Filter> filters) {
+        this(name, mode, filters);
+        setOriginDirectory(originDirectoryPath);
+        setDestinationDirectory(destinationDirectoryPath);
+    }
+    public Link(String name, LinkMode mode, File originDirectory, File destinationDirectory) { this(name, mode, originDirectory, destinationDirectory, null); }
+    public Link(String name, LinkMode mode, File originDirectory, File destinationDirectory, Collection<Filter> filters) {
+        this(name, mode, filters);
+        setOriginDirectory(originDirectory);
+        setDestinationDirectory(destinationDirectory);
+    }
 
     public void addFilter(Filter filter) {
         filters.add(filter);
@@ -71,6 +90,7 @@ public class Link {
         return filters.removeIf(predicate);
     }
 
+    public boolean setDestinationDirectory(String dirPath) { return setDestinationDirectory(new File(dirPath)); }
     public boolean setDestinationDirectory(File dir) {
         if (dir.exists() && dir.isDirectory() && dir.canWrite()) {
             this.destination = dir;
@@ -84,10 +104,16 @@ public class Link {
         this.mode = mode;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public boolean setName(String name) {
+        if (name != null && !name.isEmpty()) {
+            this.name = name;
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    public boolean setOriginDirectory(String dirPath) { return setOriginDirectory(new File(dirPath)); }
     public boolean setOriginDirectory(File dir) {
         if (dir.exists() && dir.isDirectory() && dir.canRead()) {
             this.origin = dir;
@@ -97,8 +123,8 @@ public class Link {
         }
     }
 
-    public void setFilters(List<Filter> filters) {
-        this.filters = filters;
+    public void setFilters(Collection<Filter> filters) {
+        this.filters = new ArrayList<>(filters);
     }
 
     public void upateFileLinks(){
