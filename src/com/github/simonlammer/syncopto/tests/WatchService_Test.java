@@ -1,5 +1,5 @@
 /*
-This file is part of Syncopto. © 2015 Simon Lammer (lammer.simon@gmail.com)
+This file is part of Syncopto. ï¿½ 2015 Simon Lammer (lammer.simon@gmail.com)
 
 Syncopto is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -218,12 +218,12 @@ public class WatchService_Test {
 
         // check whether the right events occurred in watcher
         List<WatchEvent<?>> watchEvents = key.pollEvents();
-        Assert.assertEquals(2, watchEvents.size()); // only one event should have occurred
+        Assert.assertEquals(2, watchEvents.size());
 
         // check modification event
         WatchEvent<?> event = watchEvents.get(0);
         WatchEvent.Kind kind = event.kind();
-        Assert.assertEquals(StandardWatchEventKinds.ENTRY_MODIFY.name(), kind.name()); // should be a create event
+        Assert.assertEquals(StandardWatchEventKinds.ENTRY_MODIFY.name(), kind.name()); // should be a modify event
 
         // check whether the event occurred on the right file
         Path path = (Path)event.context();
@@ -233,7 +233,7 @@ public class WatchService_Test {
         // check deletion event
         event = watchEvents.get(1);
         kind = event.kind();
-        Assert.assertEquals(StandardWatchEventKinds.ENTRY_DELETE.name(), kind.name()); // should be a create event
+        Assert.assertEquals(StandardWatchEventKinds.ENTRY_DELETE.name(), kind.name()); // should be a delete event
 
         // check whether the event occurred on the right file
         path = (Path)event.context();
