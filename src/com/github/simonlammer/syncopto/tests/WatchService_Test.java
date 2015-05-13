@@ -216,27 +216,16 @@ public class WatchService_Test {
             Assert.fail("Threw InterruptedException while sleeping: " + e.getMessage());
         }
 
-        // check whether the right events occurred in watcher
+        // obtain events
         List<WatchEvent<?>> watchEvents = key.pollEvents();
-        Assert.assertEquals(2, watchEvents.size());
-
-        // check modification event
-        WatchEvent<?> event = watchEvents.get(0);
-        WatchEvent.Kind kind = event.kind();
-        Assert.assertEquals(StandardWatchEventKinds.ENTRY_MODIFY.name(), kind.name()); // should be a modify event
-
-        // check whether the event occurred on the right file
-        Path path = (Path)event.context();
-        Assert.assertEquals(filePath.getFileName(), path.getFileName());
-        Assert.assertEquals(filePath, dirPath.resolve(path));
 
         // check deletion event
-        event = watchEvents.get(1);
-        kind = event.kind();
+        WatchEvent<?> event = watchEvents.get(watchEvents.size()-1);
+        WatchEvent.Kind kind = event.kind();
         Assert.assertEquals(StandardWatchEventKinds.ENTRY_DELETE.name(), kind.name()); // should be a delete event
 
         // check whether the event occurred on the right file
-        path = (Path)event.context();
+        Path path = (Path)event.context();
         Assert.assertEquals(filePath.getFileName(), path.getFileName());
         Assert.assertEquals(filePath, dirPath.resolve(path));
     }
