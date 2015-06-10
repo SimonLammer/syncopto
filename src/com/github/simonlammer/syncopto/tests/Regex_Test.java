@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License
 along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.github.simonlammer.syncopto.tests.independent;
+package com.github.simonlammer.syncopto.tests;
 
 import java.util.regex.*;
 
