@@ -1,5 +1,5 @@
 /*
-This file is part of Syncopto. © 2015 Simon Lammer (lammer.simon@gmail.com)
+This file is part of Syncopto. ï¿½ 2015 Simon Lammer (lammer.simon@gmail.com)
 
 Syncopto is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -157,5 +157,103 @@ public class Filter_Test {
         for (int i = 7; i < fileNames.length; i++) {
             Assert.assertFalse(f.isSelected(new File(dirString + fileNames[i])));
         }
+    }
+
+    @Test
+    public void testEquality() {
+        Boolean[] checkHiddenFilesValues = new Boolean[] {true, false};
+        String[] patternStrings = {"a", "b", "c", "d", "e"};
+        String[] dirPatternStrings = {"1", "2", "3", "4", null};
+        String[] names = {"Alpha", "Beta", "Gamma", "Delta"};
+
+        Pattern[] patterns = compileStringsToPatterns(patternStrings);
+        Pattern[] dirPatterns = compileStringsToPatterns(dirPatternStrings);
+        int numberOfIndividualFilters = checkHiddenFilesValues.length * patternStrings.length * dirPatternStrings.length * names.length;
+
+        /* Filter has 8 public constructors:
+        0.: Filter(String name, String patternRegex)
+        1.: Filter(String name, String patternRegex, boolean checkHiddenFiles)
+        2.: Filter(String name, String patternRegex, String directoryPatternRegex)
+        3.: Filter(String name, String patternRegex, String directoryPatternRegex, boolean checkHiddenFiles)
+        4.: Filter(String name, Pattern pattern)
+        5.: Filter(String name, Pattern pattern, boolean checkHiddenFiles)
+        6.: Filter(String name, Pattern pattern, Pattern directoryPattern)
+        7.: Filter(String name, Pattern pattern, Pattern directoryPattern, boolean checkHiddenFiles)
+
+        The returned objects should equal each other.
+        (After calling setters on filters created through simple constructors)
+         */
+        // Create filters
+        Filter[][] filters = new Filter[8][];
+        for (int i = 0; i < filters.length; i++) {
+            filters[i] = new Filter[numberOfIndividualFilters];
+        }
+        int filterIndex = 0;
+        for (int checkHiddenFilesValueIndex = 0; checkHiddenFilesValueIndex < checkHiddenFilesValues.length; checkHiddenFilesValueIndex++) {
+            for (int patternsIndex = 0; patternsIndex < patternStrings.length; patternsIndex++) {
+                for (int dirPatternsIndex = 0; dirPatternsIndex < dirPatternStrings.length; dirPatternsIndex++) {
+                    for (int namesIndex = 0; namesIndex < names.length; namesIndex++) {
+                        // Constructor 0
+                        filters[0][filterIndex] = new Filter(names[namesIndex], patternStrings[patternsIndex]);
+                        filters[0][filterIndex].setCheckHiddenFiles(checkHiddenFilesValues[checkHiddenFilesValueIndex]);
+                        filters[0][filterIndex].setDirectoryPattern(dirPatternStrings[dirPatternsIndex]);
+
+                        // Constructor 1
+                        filters[1][filterIndex] = new Filter(names[namesIndex], patternStrings[patternsIndex], checkHiddenFilesValues[checkHiddenFilesValueIndex]);
+                        filters[1][filterIndex].setDirectoryPattern(dirPatternStrings[dirPatternsIndex]);
+
+                        // Constructor 2
+                        filters[2][filterIndex] = new Filter(names[namesIndex], patternStrings[patternsIndex], dirPatternStrings[dirPatternsIndex]);
+                        filters[2][filterIndex].setCheckHiddenFiles(checkHiddenFilesValues[checkHiddenFilesValueIndex]);
+
+                        // Constructor 3
+                        filters[3][filterIndex] = new Filter(names[namesIndex], patternStrings[patternsIndex], dirPatternStrings[dirPatternsIndex], checkHiddenFilesValues[checkHiddenFilesValueIndex]);
+
+                        // Constructor 4
+                        filters[4][filterIndex] = new Filter(names[namesIndex], patterns[patternsIndex]);
+                        filters[4][filterIndex].setCheckHiddenFiles(checkHiddenFilesValues[checkHiddenFilesValueIndex]);
+                        filters[4][filterIndex].setDirectoryPattern(dirPatterns[dirPatternsIndex]);
+
+                        // Constructor 5
+                        filters[5][filterIndex] = new Filter(names[namesIndex], patterns[patternsIndex], checkHiddenFilesValues[checkHiddenFilesValueIndex]);
+                        filters[5][filterIndex].setDirectoryPattern(dirPatterns[dirPatternsIndex]);
+
+                        // Constructor 6
+                        filters[6][filterIndex] = new Filter(names[namesIndex], patterns[patternsIndex], dirPatterns[dirPatternsIndex]);
+                        filters[6][filterIndex].setCheckHiddenFiles(checkHiddenFilesValues[checkHiddenFilesValueIndex]);
+
+                        // Constructor 7
+                        filters[7][filterIndex] = new Filter(names[namesIndex], patterns[patternsIndex], dirPatterns[dirPatternsIndex], checkHiddenFilesValues[checkHiddenFilesValueIndex]);
+
+                        filterIndex++;
+                    }
+                }
+            }
+        }
+
+        // check equality
+        for (int i = 0; i < filters.length; i++) {
+            for (int j = 0; j < filters[i].length; j++) {
+                Filter filter = filters[i][j];
+                for (int k = 0; k < filters.length; k++) {
+                    for (int l = 0; l < filters[k].length; l++) {
+                        Filter other = filters[k][l];
+                        if (j == l) {
+                            Assert.assertTrue(filter.hashCode() == other.hashCode());
+                            Assert.assertTrue(filter.equals(other));
+                        } else {
+                            Assert.assertFalse(filter.equals(other));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    private Pattern[] compileStringsToPatterns(String[] strings) {
+        Pattern[] patterns = new Pattern[strings.length];
+        for (int i = 0; i < strings.length; i++) {
+            patterns[i] = strings[i] == null ? null : Pattern.compile(strings[i]);
+        }
+        return patterns;
     }
 }

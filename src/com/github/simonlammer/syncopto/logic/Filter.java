@@ -143,9 +143,9 @@ public class Filter {
         if (obj instanceof Filter) {
             Filter other = (Filter) obj;
             return this.checkHiddenFiles == other.checkHiddenFiles &&
-                    this.dirPattern.equals(other.dirPattern) &&
-                    this.pattern.equals(other.pattern) &&
-                    this.name.equals(other.name);
+                    this.pattern.toString().equals(other.pattern.toString()) &&
+                    this.name.equals(other.name) &&
+                    ((this.dirPattern == null && other.dirPattern == null) || ((this.dirPattern != null && other.dirPattern != null) && this.dirPattern.toString().equals(other.dirPattern.toString())));
         }
         return false;
     }
@@ -196,7 +196,7 @@ public class Filter {
      */
     @Override
     public int hashCode() {
-        return pattern.hashCode() & (dirPattern == null ? 0 : dirPattern.hashCode());
+        return pattern.toString().hashCode() | (dirPattern == null ? 0 : dirPattern.toString().hashCode());
     }
 
     public boolean isCheckingHiddenFiles() {
