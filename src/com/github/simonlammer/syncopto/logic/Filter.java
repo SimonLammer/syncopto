@@ -132,6 +132,24 @@ public class Filter {
         this.checkHiddenFiles = checkHiddenFiles;
     }
 
+    /**
+     * Checks equality of another Object with the Filter instance.
+     *
+     * @param obj other Object
+     * @return true, if all obj is a Filter instance and all of it's fields equal the ones of this instance.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Filter) {
+            Filter other = (Filter) obj;
+            return this.checkHiddenFiles == other.checkHiddenFiles &&
+                    this.pattern.toString().equals(other.pattern.toString()) &&
+                    this.name.equals(other.name) &&
+                    ((this.dirPattern == null && other.dirPattern == null) || ((this.dirPattern != null && other.dirPattern != null) && this.dirPattern.toString().equals(other.dirPattern.toString())));
+        }
+        return false;
+    }
+
     public Pattern getDirectoryPattern() {
         return dirPattern;
     }
@@ -170,6 +188,15 @@ public class Filter {
             }
         }
         return files.toArray(new File[files.size()]);
+    }
+
+    /**
+     * Returns a hashcode value for the Filter instance based it's patterns' hashcodes
+     * @return hashcode value
+     */
+    @Override
+    public int hashCode() {
+        return pattern.toString().hashCode() | (dirPattern == null ? 0 : dirPattern.toString().hashCode());
     }
 
     public boolean isCheckingHiddenFiles() {
