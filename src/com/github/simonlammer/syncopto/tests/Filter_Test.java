@@ -159,6 +159,9 @@ public class Filter_Test {
         }
     }
 
+    /**
+     * Checks whether all Filter constructors deliver an equal object when getting called with the same data.
+     */
     @Test
     public void testEquality() {
         Boolean[] checkHiddenFilesValues = new Boolean[] {true, false};
