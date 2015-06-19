@@ -36,7 +36,7 @@ import java.util.LinkedList;
 
 import static org.junit.Assert.*;
 
-public class LinkTest {
+public class Link_Test {
     private static File dirOrigin;
     private static Path dirOriginPath;
     private static File dirDestination;
@@ -44,7 +44,6 @@ public class LinkTest {
 
     @BeforeClass
     public static void setUp() {
-
         // origin
         // create test directory
         dirOrigin = new File("testOrigin");
@@ -87,23 +86,14 @@ public class LinkTest {
     public void testConstructors() throws Exception {
         Collection<Filter> filterCollection = new LinkedList<Filter>();
         Link link1 = new Link("link1", LinkMode.SELECTION,dirOrigin, dirDestination);
-        if(!isLinkOk(link1,LinkMode.SELECTION,dirOrigin,dirDestination)){
-            Assert.fail("Link Constructor not working properly");
-        }
+        Assert.assertTrue("Link Constructor not working properly", isLinkOk(link1,LinkMode.SELECTION,dirOrigin,dirDestination));
         Link link2 = new Link("link2", LinkMode.SELECTION,dirOrigin,dirDestination,filterCollection);
-        if(!isLinkOk(link1,LinkMode.SELECTION,dirOrigin,dirDestination)){
-            Assert.fail("Link Constructor not working properly");
-        }
+        Assert.assertTrue("Link Constructor not working properly", isLinkOk(link1,LinkMode.SELECTION,dirOrigin,dirDestination));
         Link link3 = new Link("link3", LinkMode.SELECTION,dirOriginPath.toString(),dirDestinationPath.toString());
-        if(!isLinkOk(link1,LinkMode.SELECTION,dirOrigin,dirDestination)){
-            Assert.fail("Link Constructor not working properly");
-        }
+        Assert.assertTrue("Link Constructor not working properly", isLinkOk(link1,LinkMode.SELECTION,dirOrigin,dirDestination));
         Link link4 = new Link("link4", LinkMode.SELECTION,dirOriginPath.toString(),dirDestinationPath.toString(),filterCollection);
-        if(!isLinkOk(link1,LinkMode.SELECTION,dirOrigin,dirDestination)){
-            Assert.fail("Link Constructor not working properly");
-        }
+        Assert.assertTrue("Link Constructor not working properly", isLinkOk(link1,LinkMode.SELECTION,dirOrigin,dirDestination));
     }
-
     private boolean isLinkOk(Link link, LinkMode mode, File origin, File dest){
         if(link == null){
             return false;
