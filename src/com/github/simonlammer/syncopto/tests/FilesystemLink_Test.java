@@ -17,14 +17,12 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
 
 package com.github.simonlammer.syncopto.tests;
 
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
 
 /**
@@ -34,13 +32,11 @@ public class FilesystemLink_Test {
     private static final String dirName = "FilesystemLink-Testdirectory";
     private static Path file;
     private static Path link;
+    private static final String content = "Hello World!";
 
     @BeforeClass
     public static void setUp() throws IOException {
         new File(dirName).mkdir();
-        File file = new File(dirName + "/file.file");
-        boolean res = file.createNewFile();
-        link = Files.createLink(new File(dirName + "/link").toPath(), FilesystemLink_Test.file = file.toPath());
     }
 
     @AfterClass
@@ -48,6 +44,22 @@ public class FilesystemLink_Test {
         Files.delete(link);
         Files.delete(file);
         new File(dirName).delete();
+    }
+
+    @Before
+    public void createFiles() throws IOException {
+        if (file != null) {
+            Files.deleteIfExists(file);
+        }
+        if (link != null) {
+            Files.deleteIfExists(link);
+        }
+        File file = new File(dirName + "/file.txt");
+        FilesystemLink_Test.file = file.toPath();
+        boolean res = file.createNewFile();
+        link = Files.createLink(new File(dirName + "/link.txt").toPath(), FilesystemLink_Test.file = file.toPath());
+
+        Files.write(FilesystemLink_Test.file, content.getBytes(Charset.forName("UTF-8")));
     }
 
     @Test
@@ -59,5 +71,31 @@ public class FilesystemLink_Test {
         Assert.assertTrue(res);
         Assert.assertEquals(modified, linkFile.lastModified());
         Assert.assertEquals(modified, file.toFile().lastModified());
+    }
+
+    /**
+     * Tests whether the actual file (accessable through the link) remains when the original file is being deleted.
+     * @throws IOException
+     */
+    @Test
+    public void deleteFileTest() throws IOException {
+        deleteTest(file, link);
+    }
+
+    /**
+     * Test whether the file remains when the link is being deleted.
+     * @throws IOException
+     */
+    @Test
+    public void deleteLinkTest() throws IOException {
+        deleteTest(link, file);
+    }
+    private void deleteTest(Path toDelete, Path toValidate) throws IOException {
+        Files.delete(toDelete);
+        FileReader reader = new FileReader(toValidate.toFile());
+        char[] buffer = new char[content.length()];
+        reader.read(buffer);
+        reader.close();
+        Assert.assertTrue(String.valueOf(buffer).equals(content));
     }
 }
