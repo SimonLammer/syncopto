@@ -108,4 +108,15 @@ public class Link_Test {
         }
         return true;
     }
+
+    @Test
+    public void watchingBehaviourTest() {
+        Link link = new Link("BehaviourTest link", LinkMode.SELECTION, dirOrigin, dirDestination);
+        Filter filter = new Filter("BehaviourTest filter", "*.txt");
+        link.addFilter(filter);
+
+        // Create a file in origin
+
+        // deletion
+    }
 }
