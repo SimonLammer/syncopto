@@ -47,18 +47,14 @@ public class Link_Test {
         // origin
         // create test directory
         dirOrigin = new File("testOrigin");
-        if (dirOrigin.exists()) {
-            Assert.fail("Test directory '" + dirOrigin.getAbsolutePath() + "' already exists, please delete the directory manually");
-        }
+        Assert.assertTrue("Test directory '" + dirOrigin.getAbsolutePath() + "' already exists, please delete the directory manually", dirOrigin.exists());
         dirOrigin.mkdir();
         dirOriginPath = dirOrigin.toPath();
 
         // destination
         // create test directory
         dirDestination = new File("testDestination");
-        if (dirDestination.exists()) {
-            Assert.fail("Test directory '" + dirDestination.getAbsolutePath() + "' already exists, please delete the directory manually");
-        }
+        Assert.assertTrue("Test directory '" + dirDestination.getAbsolutePath() + "' already exists, please delete the directory manually", dirDestination.exists());
         dirDestination.mkdir();
         dirDestinationPath = dirDestination.toPath();
     }
