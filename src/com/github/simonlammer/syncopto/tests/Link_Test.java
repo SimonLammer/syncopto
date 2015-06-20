@@ -26,6 +26,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -109,14 +110,47 @@ public class Link_Test {
         return true;
     }
 
+    /**
+     * Tests the behaviour of a link in watching mode (<Link>.startWatch()).
+     * In this mode, if a file is created or deleted in either of the two directories,
+     * the action should be mirrored in the other directory.
+     * @throws IOException
+     */
     @Test
-    public void watchingBehaviourTest() {
+    public void watchingBehaviourTest() throws IOException {
         Link link = new Link("BehaviourTest link", LinkMode.SELECTION, dirOrigin, dirDestination);
-        Filter filter = new Filter("BehaviourTest filter", "*.txt");
+        Filter filter = new Filter("BehaviourTest filter", ".*\\.txt");
         link.addFilter(filter);
+        link.startWatch();
+        String filename = "file.txt";
+        String content = "Hello World!";
+        long timeBuffer = 1;
 
+        createAndDeleteFile(dirOrigin, dirDestination, filename, content, timeBuffer);
+        createAndDeleteFile(dirDestination, dirOrigin, filename, content, timeBuffer);
+    }
+    private void createAndDeleteFile(File dirOrigin, File dirDestination, String filename, String content, long timeBuffer) throws IOException {
         // Create a file in origin
+        File originFile = new File(dirOrigin, filename);
+        File destinationFile = new File(dirDestination, filename);
+        Assert.assertFalse("The destinationFile already exists", destinationFile.exists());
+        Files.write(originFile.toPath(),content.getBytes());
+        Assert.assertTrue("Could not create new originFile", originFile.createNewFile());
+        try {
+            Thread.sleep(timeBuffer);
+        } catch (InterruptedException ex) {}
+        Assert.assertTrue("The destinationFile does not exist", destinationFile.exists());
+        FileReader reader = new FileReader(destinationFile);
+        char[] buffer = new char[content.length()];
+        reader.read(buffer);
+        reader.close();
+        Assert.assertTrue("The contents of destinationFile and originFile do not match", String.valueOf(buffer).equals(content));
 
-        // deletion
+        // Delete a file in origin
+        Files.delete(originFile.toPath());
+        try {
+            Thread.sleep(timeBuffer);
+        } catch (InterruptedException ex) {}
+        Assert.assertFalse("The destinationFile is still existing", destinationFile.exists());
     }
 }
