@@ -195,6 +195,13 @@ public class Link {
     }
 
     /**
+     * Start watching the directories using a WatchService to quickly react to chanages.
+     */
+    public void startWatch() {
+        throw new NotImplementedException(); // TODO: implement method
+    }
+
+    /**
      * Sets the destination directory
      * @param dirPath Path of to the new destination directory as a String
      * @return Whether dirPath leads to a directory in which the the Link is granted writing permissions
@@ -268,7 +275,16 @@ public class Link {
     }
 
     /**
-     * Updates the connection between origin and destination directory
+     * Stop watching the directories.
+     * This link will no longer react to changes.
+     * Call updateFileLinks() to update the connection.
+     */
+    public void stopWatch() {
+        throw new NotImplementedException(); // TODO: implement method
+    }
+
+    /**
+     * Updates the connection between origin and destination directory.
      */
     public void upateFileLinks(){
         throw new NotImplementedException(); //TODO
