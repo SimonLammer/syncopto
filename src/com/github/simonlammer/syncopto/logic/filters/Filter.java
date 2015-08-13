@@ -1,5 +1,5 @@
 /*
-This file is part of Syncopto. Â© 2015 Simon Lammer (lammer.simon@gmail.com)
+This file is part of Syncopto. © 2015 Simon Lammer (lammer.simon@gmail.com)
 
 Syncopto is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,9 +15,8 @@ You should have received a copy of the GNU General Public License
 along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.github.simonlammer.syncopto.logic;
+package com.github.simonlammer.syncopto.logic.filters;
 
-public enum LinkMode {
-    SELECTION,
-    EXCLUSION
+public interface Filter<T> {
+    boolean isSelected(T value);
 }
