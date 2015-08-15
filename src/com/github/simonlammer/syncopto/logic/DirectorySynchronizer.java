@@ -68,9 +68,7 @@ public class DirectorySynchronizer {
 
     private void synchronizeDirectories(File originDirectory, File destinationDirectory, Consumer<File> newFileHandler) {
         File[] originFiles = originDirectory.listFiles();
-        int originFilesIndex = 0;
-        while (originFilesIndex < originFiles.length) {
-            //TODO recursive call for directories
+        for (int originFilesIndex = 0; originFilesIndex < originFiles.length; originFilesIndex++) {
             File originFile = originFiles[originFilesIndex];
             File relativizedFile = originDirectory.toPath().relativize(originFile.toPath()).toFile();
             File destinationFile = new File(destinationDirectory, relativizedFile.getPath());
@@ -78,16 +76,13 @@ public class DirectorySynchronizer {
                 if (destinationFile.exists()) {
                     if (originFile.isDirectory() && destinationFile.isDirectory()) {
                         synchronizeDirectories(originFile, destinationFile, newFileHandler);
-                    } else {
-                        if (!filesAreLinked(originFile, destinationFile)) {
-                            filesDivergedHandler.accept(relativizedFile);
-                        }
+                    } else if (!filesAreLinked(originFile, destinationFile)) {
+                        filesDivergedHandler.accept(relativizedFile);
                     }
                 } else {
                     newFileHandler.accept(relativizedFile);
                 }
             }
-            originFilesIndex++;
         }
     }
 
