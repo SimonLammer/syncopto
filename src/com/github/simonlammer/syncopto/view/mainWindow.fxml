@@ -30,7 +30,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane id="pane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.simonlammer.syncopto.view.MainWindowController">
+<AnchorPane id="pane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.simonlammer.syncopto.view.MainWindowController">
    <children>
       <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -75,7 +75,14 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
 <!-- Content of "Links" tab -->
                         <children>
                               <BorderPane layoutX="200.0" layoutY="136.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <right>
+                                 <left>
+                                    <ListView fx:id="listView_status1" BorderPane.alignment="CENTER">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </ListView>
+                                 </left>
+                                 <center>
                                     <GridPane BorderPane.alignment="CENTER">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="NEVER" />
@@ -87,7 +94,6 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                           <RowConstraints vgrow="NEVER" />
                                         <RowConstraints vgrow="NEVER" />
                                         <RowConstraints minHeight="-Infinity" vgrow="NEVER" />
-                                          <RowConstraints vgrow="NEVER" />
                                           <RowConstraints vgrow="NEVER" />
                                         <RowConstraints vgrow="ALWAYS" />
                                           <RowConstraints vgrow="NEVER" />
@@ -113,91 +119,10 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                              <GridPane.margin>
                                                 <Insets top="2.0" />
                                              </GridPane.margin></Button>
-                                          <BorderPane GridPane.columnSpan="3" GridPane.rowIndex="5">
+                                          <BorderPane GridPane.columnSpan="3" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets />
                                              </GridPane.margin>
-                                             <right>
-                                                <GridPane BorderPane.alignment="CENTER">
-                                                  <columnConstraints>
-                                                    <ColumnConstraints hgrow="NEVER" />
-                                                    <ColumnConstraints hgrow="SOMETIMES" />
-                                                  </columnConstraints>
-                                                  <rowConstraints>
-                                                      <RowConstraints vgrow="NEVER" />
-                                                    <RowConstraints vgrow="NEVER" />
-                                                      <RowConstraints vgrow="NEVER" />
-                                                      <RowConstraints vgrow="NEVER" />
-                                                      <RowConstraints vgrow="NEVER" />
-                                                    <RowConstraints vgrow="SOMETIMES" />
-                                                  </rowConstraints>
-                                                   <children>
-                                                      <Label text="Pattern" GridPane.rowIndex="1">
-                                                         <GridPane.margin>
-                                                            <Insets right="5.0" />
-                                                         </GridPane.margin>
-                                                      </Label>
-                                                      <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                         <GridPane.margin>
-                                                            <Insets top="3.0" />
-                                                         </GridPane.margin></TextField>
-                                                      <GridPane GridPane.columnSpan="2" GridPane.rowIndex="5">
-                                                         <children>
-                                                            <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New filter" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                                                            <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Remove filter" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
-                                                            <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Preview filter" GridPane.columnIndex="1">
-                                                               <GridPane.margin>
-                                                                  <Insets left="3.0" right="3.0" />
-                                                               </GridPane.margin>
-                                                            </Button>
-                                                         </children>
-                                                         <columnConstraints>
-                                                            <ColumnConstraints hgrow="SOMETIMES" />
-                                                            <ColumnConstraints hgrow="SOMETIMES" />
-                                                            <ColumnConstraints hgrow="SOMETIMES" />
-                                                         </columnConstraints>
-                                                         <rowConstraints>
-                                                            <RowConstraints minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
-                                                         </rowConstraints>
-                                                         <padding>
-                                                            <Insets top="5.0" />
-                                                         </padding>
-                                                         <GridPane.margin>
-                                                            <Insets />
-                                                         </GridPane.margin>
-                                                      </GridPane>
-                                                      <Label text="Name" />
-                                                      <TextField disable="true" minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1" />
-                                                      <CheckBox disable="true" mnemonicParsing="false" selected="true" text="Scan subdirectories" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                                         <GridPane.margin>
-                                                            <Insets top="3.0" />
-                                                         </GridPane.margin></CheckBox>
-                                                      <Label text="TODO" GridPane.rowIndex="2"> <!-- TODO give the label a proper text -->
-                                                         <GridPane.margin>
-                                                            <Insets right="5.0" />
-                                                         </GridPane.margin>
-                                                      </Label>
-                                                      <Label text="Subdir Pattern" wrapText="true" GridPane.rowIndex="3"> <!-- TODO give the label a proper text -->
-                                                         <GridPane.margin>
-                                                            <Insets right="5.0" />
-                                                         </GridPane.margin>
-                                                      </Label>
-                                                      <TextField disable="true" text=".*" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                                         <GridPane.margin>
-                                                            <Insets top="3.0" />
-                                                         </GridPane.margin></TextField>
-                                                      <Label text="TODO" GridPane.rowIndex="4" />
-                                                      <CheckBox disable="true" mnemonicParsing="false" text="Check hidden files" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                                         <GridPane.margin>
-                                                            <Insets top="3.0" />
-                                                         </GridPane.margin>
-                                                      </CheckBox>
-                                                   </children>
-                                                   <BorderPane.margin>
-                                                      <Insets left="10.0" />
-                                                   </BorderPane.margin>
-                                                </GridPane>
-                                             </right>
                                              <center>
                                                 <ListView disable="true" BorderPane.alignment="CENTER">
                                                    <opaqueInsets>
@@ -205,8 +130,32 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                    </opaqueInsets>
                                                 </ListView>
                                              </center>
+                                             <bottom>
+                                                <GridPane BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Add filter" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                      <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Remove filter" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                      <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Edit filter" GridPane.columnIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="3.0" right="3.0" />
+                                                         </GridPane.margin>
+                                                      </Button>
+                                                   </children>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <padding>
+                                                      <Insets top="5.0" />
+                                                   </padding>
+                                                </GridPane>
+                                             </bottom>
                                           </BorderPane>
-                                          <AnchorPane GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                          <AnchorPane GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
                                              <children>
                                                 <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="40.0" text="Filter" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
@@ -220,7 +169,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <GridPane GridPane.columnSpan="3" GridPane.rowIndex="6">
+                                          <GridPane GridPane.columnSpan="3" GridPane.rowIndex="5">
                                              <children>
                                                 <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New link" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
                                                 <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Remove link" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
@@ -230,9 +179,9 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                    </GridPane.margin></Button>
                                              </children>
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="ALWAYS" />
+                                                <ColumnConstraints hgrow="ALWAYS" percentWidth="33.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" />
-                                                <ColumnConstraints hgrow="ALWAYS" />
+                                                <ColumnConstraints hgrow="ALWAYS" percentWidth="33.0" />
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints vgrow="SOMETIMES" />
@@ -241,45 +190,11 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
                                                 <Insets top="7.0" />
                                              </GridPane.margin>
                                           </GridPane>
-                                          <Label text="Mode" GridPane.rowIndex="3">
-                                             <GridPane.margin>
-                                                <Insets right="5.0" />
-                                             </GridPane.margin>
-                                          </Label>
-                                          <VBox GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
-                                             <children>
-                                                <RadioButton mnemonicParsing="false" selected="true" text="Selection">
-                                                   <toggleGroup>
-                                                      <ToggleGroup fx:id="mode" />
-                                                   </toggleGroup>
-                                                </RadioButton>
-                                                <RadioButton mnemonicParsing="false" text="Exclusion" toggleGroup="$mode">
-                                                   <padding>
-                                                      <Insets top="2.0" />
-                                                   </padding></RadioButton>
-                                             </children>
-                                             <GridPane.margin>
-                                                <Insets top="3.0" />
-                                             </GridPane.margin>
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </VBox>
                                        </children>
                                        <BorderPane.margin>
                                           <Insets left="5.0" />
                                        </BorderPane.margin>
                                     </GridPane>
-                                 </right>
-                                 <center>
-                                    <ListView fx:id="listView_status1" BorderPane.alignment="CENTER">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </ListView>
                                  </center>
                               </BorderPane>
                            </children>

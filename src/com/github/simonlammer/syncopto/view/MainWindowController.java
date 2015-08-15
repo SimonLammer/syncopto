@@ -65,10 +65,10 @@ public class MainWindowController {
         listView_status.setItems(observableList);
 
         label_about_license.setOnMouseClicked((MouseEvent event) -> {
-            openURL("http://www.link.to.gpl3.com/"); // TODO replace string with link to GPL v3
+            openURL("http://www.gnu.org/licenses/gpl-3.0.en.html");
         });
         label_about_github.setOnMouseClicked((MouseEvent event) -> {
-            openURL("https://www.github.com/simonlammer/syncopto"); // TODO validate link
+            openURL("https://www.github.com/simonlammer/syncopto");
         });
     }
 
