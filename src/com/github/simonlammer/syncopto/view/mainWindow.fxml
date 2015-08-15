@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+This file is part of Syncopto. © 2015 Simon Lammer (lammer.simon@gmail.com)
+
+Syncopto is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Syncopto is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane id="pane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.simonlammer.syncopto.view.MainWindowController">
+   <children>
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Status">
+                  <content>
+                    <AnchorPane styleClass="tabPane">
+                           <children>
+                              <GridPane minWidth="492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" />
+                                  <ColumnConstraints hgrow="ALWAYS" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ImageView id="imgView_status" fx:id="imgView_status" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" />
+                                       </GridPane.margin></ImageView>
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                       <children>
+                                          <Label minWidth="92.0" prefWidth="92.0" text="Lately done" VBox.vgrow="NEVER" />
+                                          <ListView fx:id="listView_status" VBox.vgrow="ALWAYS">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </ListView>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Links">
+                     <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="tabPane">
+<!-- Content of "Links" tab -->
+                        <children>
+                              <BorderPane layoutX="200.0" layoutY="136.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <left>
+                                    <ListView fx:id="listView_status1" BorderPane.alignment="CENTER">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </ListView>
+                                 </left>
+                                 <center>
+                                    <GridPane BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="NEVER" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="NEVER" />
+                                          <ColumnConstraints hgrow="NEVER" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints vgrow="NEVER" />
+                                        <RowConstraints vgrow="NEVER" />
+                                        <RowConstraints minHeight="-Infinity" vgrow="NEVER" />
+                                          <RowConstraints vgrow="NEVER" />
+                                        <RowConstraints vgrow="ALWAYS" />
+                                          <RowConstraints vgrow="NEVER" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="From" GridPane.rowIndex="1" />
+                                          <Label text="To" GridPane.rowIndex="2" />
+                                          <TextField minHeight="-Infinity" prefHeight="40.0" text="C:\some\dir\I\want\to\link" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" top="3.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField minHeight="-Infinity" prefHeight="40.0" text="D:\path\to\another\directory\with\a\really\very\long\path\indeed\" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" top="3.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Button mnemonicParsing="false" text="..." GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets top="2.0" />
+                                             </GridPane.margin></Button>
+                                          <Button mnemonicParsing="false" text="..." GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets top="2.0" />
+                                             </GridPane.margin></Button>
+                                          <BorderPane GridPane.columnSpan="3" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets />
+                                             </GridPane.margin>
+                                             <center>
+                                                <ListView disable="true" BorderPane.alignment="CENTER">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </ListView>
+                                             </center>
+                                             <bottom>
+                                                <GridPane BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Add filter" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                      <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Remove filter" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                      <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="40.0" mnemonicParsing="false" text="Edit filter" GridPane.columnIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="3.0" right="3.0" />
+                                                         </GridPane.margin>
+                                                      </Button>
+                                                   </children>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="-Infinity" prefHeight="40.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <padding>
+                                                      <Insets top="5.0" />
+                                                   </padding>
+                                                </GridPane>
+                                             </bottom>
+                                          </BorderPane>
+                                          <AnchorPane GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                             <children>
+                                                <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="40.0" text="Filter" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                             <GridPane.margin>
+                                                <Insets top="3.0" />
+                                             </GridPane.margin>
+                                          </AnchorPane>
+                                          <Label text="Name" />
+                                          <TextField minHeight="-Infinity" prefHeight="40.0" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <GridPane GridPane.columnSpan="3" GridPane.rowIndex="5">
+                                             <children>
+                                                <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="New link" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Remove link" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+                                                <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Preview link" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                                   <GridPane.margin>
+                                                      <Insets left="3.0" right="3.0" />
+                                                   </GridPane.margin></Button>
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="ALWAYS" percentWidth="33.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" />
+                                                <ColumnConstraints hgrow="ALWAYS" percentWidth="33.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <GridPane.margin>
+                                                <Insets top="7.0" />
+                                             </GridPane.margin>
+                                          </GridPane>
+                                       </children>
+                                       <BorderPane.margin>
+                                          <Insets left="5.0" />
+                                       </BorderPane.margin>
+                                    </GridPane>
+                                 </center>
+                              </BorderPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
+                           </padding>
+<!-- End of content of "Links" tab -->
+                    </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Settings"> <!-- TODO add settings -->
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="127.0" layoutY="132.0" text="TODO">
+                                 <font>
+                                    <Font size="200.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="About">
+                    <content>
+                      <AnchorPane styleClass="tabPane">
+<!-- Content of "About" tab -->
+                                  <children>
+                                     <GridPane alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                         <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
+                                         <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                        <children>
+                                           <ImageView id="imgView_about" fitWidth="650.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES" />
+                                           <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" visible="false" GridPane.rowIndex="1">
+                                              <children>
+                                                 <Label alignment="CENTER" contentDisplay="CENTER" text="Copyright: © 2015 Simon Lammer&#10;Licensed under GPL (version 3)&#10;Source: https://github.com/SimonLammer/syncopto" textAlignment="CENTER" />
+                                              </children>
+                                           </VBox>
+                                           <GridPane GridPane.rowIndex="1">
+                                             <columnConstraints>
+                                               <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                                               <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                               <RowConstraints vgrow="SOMETIMES" />
+                                               <RowConstraints vgrow="NEVER" />
+                                               <RowConstraints vgrow="NEVER" />
+                                                 <RowConstraints vgrow="NEVER" />
+                                                 <RowConstraints vgrow="ALWAYS" />
+                                             </rowConstraints>
+                                              <children>
+                                                 <Label text="Syncopto" GridPane.halignment="RIGHT">
+                                                    <GridPane.margin>
+                                                       <Insets right="5.0" />
+                                                    </GridPane.margin>
+                                                 </Label>
+                                                 <Label text="Copyright" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                                    <GridPane.margin>
+                                                       <Insets right="5.0" />
+                                                    </GridPane.margin>
+                                                 </Label>
+                                                  <!-- TODO replace (C) below with proper copyright symbol -->
+                                          <Label text="(C) 2015 Simon Lammer (lammer.simon@gmail.com)" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label text="Licenced under" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="label_about_license" text="GPL (version 3)" textFill="#177aeb" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label text="Source" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets right="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="label_about_github" text="github" textFill="#177aeb" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label text="0.1" GridPane.columnIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+<!-- End of content of "About" tab -->
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center></BorderPane>
+   </children>
+   <stylesheets>
+      <URL value="@style.css" />
+      <URL value="@mainWindowStyle.css" />
+   </stylesheets>
+</AnchorPane>
