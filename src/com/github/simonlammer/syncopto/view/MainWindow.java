@@ -42,6 +42,6 @@ public class MainWindow extends Application {
         primaryStage.show();
 
         MainWindowController controller = loader.getController();
-        controller.init(primaryStage);
+        controller.setStage(primaryStage);
     }
 }
