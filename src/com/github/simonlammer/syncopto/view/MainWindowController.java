@@ -40,6 +40,7 @@ import javax.swing.*;
 public class MainWindowController {
     @FXML private ImageView imgView_status;
     @FXML private ListView<?> listView_status;
+    private ObservableList statusMessages;
     @FXML private ListView<?> listView_links;
     @FXML private TextField textField_originDirectoryPath;
     @FXML private TextField textField_destinationDirectoryPath;
@@ -54,6 +55,22 @@ public class MainWindowController {
     @FXML private Label label_version;
 
     private Stage stage;
+
+    public void addStatusMessage(String message) {
+        statusMessages.add(message);
+        // if the list does not update just from the command above,
+        // reassign the items
+        // listView_status.setItems(null);
+        // listView_status.setItems(statusMessages);
+    }
+
+    public String[] getStatusMessages() {
+        return (String[]) statusMessages.toArray(new String[statusMessages.size()]);
+    }
+
+    public void clearStatusMessages() {
+        statusMessages.clear();
+    }
 
     @FXML
     void addFilter(ActionEvent event) {
@@ -133,18 +150,8 @@ public class MainWindowController {
         assert textField_name != null : "fx:id=\"textField_name\" was not injected: check your FXML file 'mainWindow.fxml'.";
         assert label_version != null : "fx:id=\"label_version\" was not injected: check your FXML file 'mainWindow.fxml'.";
 
-        ObservableList observableList = FXCollections.observableArrayList();
-        observableList.addAll(
-                "Created:    Pictures > pic001.png",
-                "Created:    Pictures > pic002.png",
-                "Modified:  Stuff > notes.txt",
-                "Removed: Documents > OldBill.pdf",
-                "Created:    Pictures > pic003.png",
-                "Created:    Pictures > pic004.png",
-                "Modified:  School > Hello World.java",
-                "Removed: Stuff > someRandomFileIDontWantAnymore.txt"
-        );
-        listView_status.setItems(observableList);
+        statusMessages = FXCollections.observableArrayList();
+        listView_status.setItems(statusMessages);
     }
 
     public void setStage(Stage stage) {
