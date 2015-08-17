@@ -42,6 +42,11 @@ public class MainWindow extends Application {
         primaryStage.show();
 
         MainWindowController controller = loader.getController();
-        controller.init(primaryStage);
+        controller.setStage(primaryStage);
+        controller.addStatusMessage("message1");
+        controller.addStatusMessage("message2");
+        controller.clearStatusMessages();
+        controller.addStatusMessage("message3");
+        controller.addStatusMessage("message4");
     }
 }
