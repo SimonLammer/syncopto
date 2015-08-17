@@ -1,5 +1,5 @@
 /*
-This file is part of Syncopto. © 2015 Simon Lammer (lammer.simon@gmail.com)
+This file is part of Syncopto. ï¿½ 2015 Simon Lammer (lammer.simon@gmail.com)
 
 Syncopto is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,8 +20,7 @@ package com.github.simonlammer.syncopto.tests;
 import com.github.simonlammer.syncopto.logic.DirectorySynchronizer;
 import com.github.simonlammer.syncopto.logic.DirectorySynchronizerBuilder;
 import com.github.simonlammer.syncopto.logic.filters.FilterManager;
-import com.github.simonlammer.syncopto.tests.utils.RWeTestdirectoryTest;
-import org.junit.After;
+import com.github.simonlammer.syncopto.tests.utils.OriginDestinationDirectoriesTest;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,9 +29,7 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
-public class DirectorySynchronizer_Test extends RWeTestdirectoryTest {
-    private File originDirectory;
-    private File destinationDirectory;
+public class DirectorySynchronizer_Test extends OriginDestinationDirectoriesTest {
     private DirectorySynchronizerBuilder directorySynchronizerBuilder;
     private boolean newFileInOriginHandlerTriggered;
     private boolean newFileInDestinationHandlerTriggered;
@@ -41,15 +38,9 @@ public class DirectorySynchronizer_Test extends RWeTestdirectoryTest {
 
     @Before
     public void setUp() {
-        createDirectories();
         createDirectorySynchronizerBuilder();
         resetHandlerTriggeredFlags();
         resetFileToHandle();
-    }
-
-    private void createDirectories() {
-        originDirectory = testDirectory.createDirectory("origin", "RWe");
-        destinationDirectory = testDirectory.createDirectory("destination", "RWe");
     }
 
     private void createDirectorySynchronizerBuilder() {
@@ -70,16 +61,6 @@ public class DirectorySynchronizer_Test extends RWeTestdirectoryTest {
 
     private void resetFileToHandle() {
         fileToHandle = new File("THIS FILE DOES NOT EXIST");
-    }
-
-    @After
-    public void tearDown() {
-        deleteDirectories();
-    }
-
-    private void deleteDirectories() {
-        assertTrue(originDirectory.delete());
-        assertTrue(destinationDirectory.delete());
     }
 
     @Test

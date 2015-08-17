@@ -17,6 +17,7 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
 
 package com.github.simonlammer.syncopto.logic.filters;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.Stack;
 
@@ -29,5 +30,17 @@ public abstract class BasicFilter<T> implements Filter<T> {
             }
         });
         return selectedValues;
+    }
+
+    public T[] determineSelectedValues(T[] unfilteredValues) {
+        Stack<T> selectedValues = new Stack<>();
+        for (T value : unfilteredValues) {
+            if (isSelected(value)) {
+                selectedValues.push(value);
+            }
+        }
+        @SuppressWarnings("unchecked")
+        T[] result = (T[]) selectedValues.toArray();
+        return result;
     }
 }
