@@ -34,7 +34,7 @@ public class Program {
         links = new HashMap<>();
     }
 
-    public Program getInstance() {
+    public static Program getInstance() {
         if (instance == null) {
             instance = new Program();
         }

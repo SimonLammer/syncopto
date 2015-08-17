@@ -33,16 +33,20 @@ public class Link {
     private DirectorySynchronizer directorySynchronizer;
 
     public Link(LinkBuilder builder) {
-        throwExceptionOnNullValues(builder);
+        throwExceptionOnIllegalValues(builder);
         assignFields(builder);
         setChangedHandlers();
     }
 
-    private void throwExceptionOnNullValues(LinkBuilder builder) {
+    private void throwExceptionOnIllegalValues(LinkBuilder builder) {
         if (builder.getOriginDirectory() == null) {
             throw new IllegalArgumentException("originDirectory must not be null");
+        } else if (!builder.getOriginDirectory().exists()) {
+            throw new IllegalArgumentException("originDirectory must exist");
         } else if (builder.getDestinationDirectory() == null) {
             throw new IllegalArgumentException("destinationDirectory must not be null");
+        } else if (!builder.getDestinationDirectory().exists()) {
+            throw new IllegalArgumentException("destination Directory must exist");
         } else if (builder.getOriginWatcher() == null) {
             throw new IllegalArgumentException("originWatcher must not be null");
         } else if (builder.getDestinationWatcher() == null) {
