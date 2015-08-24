@@ -62,11 +62,11 @@ public class DirectorySynchronizer {
     }
 
     public void synchronizeDirectories() {
-        synchronizeDirectories(originDirectory, destinationDirectory, newFileInOriginHandler);
-        synchronizeDirectories(destinationDirectory, originDirectory, newFileInDestinationHandler);
+        synchronizeDirectories(originDirectory, destinationDirectory, newFileInOriginHandler, false);
+        synchronizeDirectories(destinationDirectory, originDirectory, newFileInDestinationHandler, true);
     }
 
-    private void synchronizeDirectories(File originDirectory, File destinationDirectory, Consumer<File> newFileHandler) {
+    private void synchronizeDirectories(File originDirectory, File destinationDirectory, Consumer<File> newFileHandler, boolean handleDivergedFiles) {
         File[] originFiles = originDirectory.listFiles();
         for (int originFilesIndex = 0; originFilesIndex < originFiles.length; originFilesIndex++) {
             File originFile = originFiles[originFilesIndex];
@@ -75,8 +75,8 @@ public class DirectorySynchronizer {
             if (filter.isSelected(originFile)) {
                 if (destinationFile.exists()) {
                     if (originFile.isDirectory() && destinationFile.isDirectory()) {
-                        synchronizeDirectories(originFile, destinationFile, newFileHandler);
-                    } else if (!filesAreLinked(originFile, destinationFile)) {
+                        synchronizeDirectories(originFile, destinationFile, newFileHandler, handleDivergedFiles);
+                    } else if (handleDivergedFiles && !filesAreLinked(originFile, destinationFile)) {
                         filesDivergedHandler.accept(relativizedFile);
                     }
                 } else {
