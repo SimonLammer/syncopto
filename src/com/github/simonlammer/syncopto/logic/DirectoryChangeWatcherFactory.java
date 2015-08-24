@@ -20,9 +20,11 @@ package com.github.simonlammer.syncopto.logic;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.File;
+import java.nio.file.Path;
 
 public class DirectoryChangeWatcherFactory {
-    public static DirectoryChangeWatcher createDirectoryChangeWatcher(File directory) {
-        throw new NotImplementedException();
+    public static DirectoryChangeWatcher createDirectoryChangeWatcher(Path directory) {
+        BasicDirectoryChangeWatcher watcher = new BasicDirectoryChangeWatcher(directory);
+        return watcher;
     }
 }

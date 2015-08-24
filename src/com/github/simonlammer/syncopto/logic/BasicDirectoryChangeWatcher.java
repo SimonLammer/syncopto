@@ -1,5 +1,5 @@
 /*
-This file is part of Syncopto. © 2015 Simon Lammer (lammer.simon@gmail.com)
+This file is part of Syncopto. ï¿½ 2015 Simon Lammer (lammer.simon@gmail.com)
 
 Syncopto is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -39,6 +39,10 @@ public class BasicDirectoryChangeWatcher implements DirectoryChangeWatcher {
 
     BiConsumer<ActionType, File> handler;
 
+    public BasicDirectoryChangeWatcher(Path rootDirectory){
+        this.directory = rootDirectory;
+    }
+
     @Override
     public void startWatching() {
 
@@ -53,7 +57,8 @@ public class BasicDirectoryChangeWatcher implements DirectoryChangeWatcher {
                     // handle events
                     for (WatchEvent<?> event : wk.pollEvents()) {
                         if (event.context() instanceof Path) {
-                            final File file = new File(((Path)event.context()).toUri());
+                            Path filePath = directory.resolve(((Path)event.context()));
+                            final File file = new File(filePath.toUri());
                             ActionType type;
 
                             if (event.kind().name().equals(StandardWatchEventKinds.ENTRY_CREATE.name())) {
@@ -70,13 +75,13 @@ public class BasicDirectoryChangeWatcher implements DirectoryChangeWatcher {
                     }
                     // reset the key that further events will be registered too.
                     boolean valid = wk.reset();
-                } catch (InterruptedException e) {
+                } catch (InterruptedException | ClosedWatchServiceException e) {
                     return;
                 }
             }
         });
 
-        checkThread.setDaemon(true);
+        checkThread.setDaemon(false);
         checkThread.setPriority(Thread.MIN_PRIORITY);
         checkThread.setName("Syncopto Sync-Service");
         checkThread.start();
@@ -109,7 +114,7 @@ public class BasicDirectoryChangeWatcher implements DirectoryChangeWatcher {
         watching = false;
         if (checkThread != null && checkThread.isAlive()) {
             try {
-                checkThread.join(500);
+                checkThread.join(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -129,9 +134,5 @@ public class BasicDirectoryChangeWatcher implements DirectoryChangeWatcher {
 
     public Path getDirectory() {
         return directory;
-    }
-
-    public void setDirectory(Path directory) {
-        this.directory = directory;
     }
 }
