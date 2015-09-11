@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+This file is part of Syncopto. © 2015 Simon Lammer (lammer.simon@gmail.com)
+
+Syncopto is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Syncopto is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane id="pane" prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.simonlammer.syncopto.view.GraphicalDirectorySynchronizerWindowController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+         <bottom>
+            <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Action: " />
+                  <ComboBox fx:id="combobox_actions" maxWidth="1.7976931348623157E308" promptText="Choose action" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="2.0" right="2.0" />
+                     </HBox.margin></ComboBox>
+                  <Button mnemonicParsing="false" onAction="#applyAction" text="Apply action to selected Files" />
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
+                  <Insets top="2.0" />
+               </padding>
+            </HBox>
+         </bottom>
+         <left>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <ListView fx:id="listView_changes" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <HBox>
+                     <children>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Select all" HBox.hgrow="SOMETIMES">
+                           <HBox.margin>
+                              <Insets right="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Unselect all" HBox.hgrow="SOMETIMES" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Relative filename: " />
+                  <TextField fx:id="textField_relativeFilename" GridPane.columnIndex="1" />
+                  <TableView fx:id="tableView_details" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                    <columns>
+                      <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="70.0" prefWidth="-1.0" text="Attribute" />
+                      <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="90.0" prefWidth="-1.0" text="Origin" />
+                        <TableColumn editable="false" maxWidth="1.7976931348623157E308" minWidth="90.0" prefWidth="-1.0" text="Destination" />
+                    </columns>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets left="2.0" />
+               </padding>
+            </GridPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

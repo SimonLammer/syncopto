@@ -17,12 +17,12 @@ along with Syncopto.  If not, see <http://www.gnu.org/licenses/>.
 
 #imgView_status {
     -fx-fit-to-height: true;
-    -fx-image: url("sync_green.png")
+    -fx-image: url("../sync_green.png")
 }
 
 #imgView_about {
     -fx-fit-to-width: true;
-    -fx-image: url("syncopto.png");
+    -fx-image: url("../syncopto.png");
 }
 
 .tabPane {

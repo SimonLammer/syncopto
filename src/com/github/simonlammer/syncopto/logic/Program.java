@@ -53,7 +53,7 @@ public class Program {
         return links.get(name);
     }
 
-    private String[] getLinkNames() {
+    public String[] getLinkNames() {
         return links.keySet().toArray(new String[links.size()]);
     }
 
